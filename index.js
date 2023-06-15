@@ -47,7 +47,7 @@ function mostrarProductos(producto) {
                     <div class="infooo">
                         <p class="descripcion">${producto.description}</p>
                     </div>
-                    <button class="btn-srv">ver detalles</button>
+                    <button class="btn-srv">see details</button>
                 </div>
     `;
   galeria.append(Div);
