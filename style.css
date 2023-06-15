@@ -62,18 +62,18 @@
   border: 1px solid #00000026;
   margin: 15px;
   width: 30%;
-  height: 500px;
+  height: 490px;
   box-shadow: 0 0 1rem rgba(48, 45, 45, 0.165);
   border-radius: 5px;
   position: relative;
 }
 .info {
-  margin: 15px;
+  margin: 5px 15px 5px 15px;
 }
 .info-title {
   margin: 0;
   width: 100%;
-  height: 50px;
+  height: 48px;
   overflow: hidden;
   font-size: 25px;
 }
@@ -115,7 +115,7 @@
 img {
   width: 100%;
   height: 350px;
-  border-radius: 5px;
+  border-radius: 5px 5px 0px 0px;
   object-fit: fill;
   filter: brightness(90%);
   opacity: 90%;
@@ -123,4 +123,28 @@ img {
 img:hover {
   filter: brightness(100%);
   opacity: 100%;
+}
+@media (max-width: 600px) {
+  #buscar {
+    display: block;
+  }
+  .tit {
+    margin: 5px;
+  }
+  #combobox {
+    margin-bottom: 5px;
+  }
+  #galeria {
+    display: block;
+  }
+  .product {
+    width: 90%;
+    height: 530px;
+  }
+  .btn-srv {
+    width: 100%;
+    height: 50px;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
 }

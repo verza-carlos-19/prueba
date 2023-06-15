@@ -49,7 +49,7 @@ function mostrarProductos(producto) {
                     <div class="info-des">
                         <p class="descripcion">${producto.description}</p>
                     </div>
-                    <button class="btn-srv">see details</button>
+                    <button class="btn-srv" onclick="enfocarUno(${producto})">SEE DETAILS</button>
                 </div>
     `;
   galeria.append(Div);
@@ -75,4 +75,9 @@ function encontrarCat(jxson) {
     console.log(b);
     mostrarProductos(jxson.products[b]);
   }
+}
+function enfocarUno(prod) {
+  console.log("carlos verza");
+  console.log("hola mundo");
+  console.log(prod);
 }
