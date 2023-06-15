@@ -43,8 +43,10 @@ function mostrarProductos(producto) {
                     <img src="${producto.images[0]}" alt="${producto.title}">
                 </div>
                 <div class="info">
-                    <h1>${producto.title.substring(0, 15)}</h1>
-                    <div class="infooo">
+                    <div class="info-title"> 
+                        <h2 class="titlee">${producto.title}</h2>
+                    </div>
+                    <div class="info-des">
                         <p class="descripcion">${producto.description}</p>
                     </div>
                     <button class="btn-srv">see details</button>
