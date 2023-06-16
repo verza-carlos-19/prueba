@@ -49,7 +49,7 @@ function mostrarProductos(producto) {
                     <div class="info-des">
                         <p class="descripcion">${producto.description}</p>
                     </div>
-                    <button class="btn-srv" onclick="enfocarUno(${producto})">SEE DETAILS</button>
+                    <button class="btn-srv" onclick="enfocarUno(${producto.id})">SEE DETAILS</button>
                 </div>
     `;
   galeria.append(Div);
