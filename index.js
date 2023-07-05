@@ -4,6 +4,9 @@ const urln = "https://dummyjson.com/product/";
 let combox = document.querySelector("#combobox");
 var seleccion = "";
 var categories = "";
+var cart = [];
+const spanCart = document.querySelector("#numcart");
+
 function init() {
   categories = "https://dummyjson.com/products/categories";
   fetch(categories)
@@ -49,8 +52,13 @@ function mostrarProductos(producto) {
                     <div class="info-des">
                         <p class="descripcion">${producto.description}</p>
                     </div>
-                    <button class="btn-srv" onclick="enfocarUno(${producto.id})">SEE DETAILS</button>
-                </div>
+                    <div class="buttons">
+                    <button class="btns btn-srv" onclick="enfocarUno(${producto.id})">more details</button>
+                    <button class="btns btn-agregar" onclick="testCartAdd(${producto.id})">add to cart</button> 
+                    <!--<span class="material-symbols-outlined cartadd"> add_shopping_cart </span>-->
+
+                    </div>
+                    </div>
     `;
   galeria.append(Div);
 }
@@ -80,4 +88,22 @@ function enfocarUno(prod) {
   console.log("carlos verza");
   console.log("hola mundo");
   console.log(prod);
+}
+function testCartAdd(id) {
+  console.log("ok");
+  cart.push("producto id agregado = " + id);
+  console.log(id);
+  modSpanCart();
+  mostrarLog(id);
+}
+function testCart() {
+  console.log(cart);
+}
+function modSpanCart() {
+  spanCart.innerHTML = `${cart.length}`;
+}
+function mostrarLog(idd) {
+  fetch(urln + idd)
+    .then((res) => res.json())
+    .then((json) => cart.push(json));
 }

@@ -5,11 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <title>proyect 1</title>
   </head>
   <body onload="init()">
     <header>
-      <div id="buscar">
+      <div class="buscar">
         <section class="src">
           <p class="tit">CATEGORIES:</p>
         </section>
@@ -22,8 +30,39 @@
           <button id="btn-src" onclick="enviar()">SEARCH</button>
         </section>
       </div>
+      <div class="carting" onclick="testCart()">
+        <!-- <span class="material-symbols-outlined"> add_shopping_cart </span>-->
+        <span class="material-symbols-outlined cart" onclick="testCart()">
+          shopping_cart
+        </span>
+        <span id="numcart"> 0 </span>
+      </div>
     </header>
     <main>
+      <div class="product">
+        <div class="img">
+          <img src="" alt="" />
+        </div>
+        <div class="info">
+          <div class="info-title">
+            <h2 class="titlee">prueba</h2>
+          </div>
+          <div class="info-des">
+            <p class="descripcion">${producto.description}</p>
+          </div>
+          <div class="buttons">
+            <button class="btns btn-srv" onclick="enfocarUno()">
+              more details
+            </button>
+            <button class="btns btn-agregar" onclick="testCartAdd()">
+              add to cart
+            </button>
+            <!--<span class="material-symbols-outlined cartadd">
+              add_shopping_cart
+            </span>-->
+          </div>
+        </div>
+      </div>
       <div id="galeria"></div>
     </main>
     <footer>
