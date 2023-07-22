@@ -1,12 +1,17 @@
 const galeria = document.querySelector("#galeria");
+const prodsShop = document.querySelector("#prods");
 const url = "https://dummyjson.com/products/category/";
 const urln = "https://dummyjson.com/product/";
 let combox = document.querySelector("#combobox");
 var seleccion = "";
 var categories = "";
 var cart = [];
+var totalprice = 0;
 const spanCart = document.querySelector("#numcart");
+const spanTotal = document.querySelector("#total");
+const spanCuantCart = document.querySelector(".numcuant");
 
+//no se toca👇 porque es lo que hace funcionar la pag.
 function init() {
   categories = "https://dummyjson.com/products/categories";
   fetch(categories)
@@ -14,6 +19,8 @@ function init() {
     .then((json) => cargarCombox(json));
   cargarProductos();
 }
+
+//no se toca👇 porque es lo que hace funcionar el combox.
 function cargarCombox(jason) {
   for (let a = 0; a < jason.length; a++) {
     const option = document.createElement("option");
@@ -27,6 +34,7 @@ function cargarCombox(jason) {
     console.log(j);
   }
 }
+
 function cargarProductos() {
   while (galeria.firstChild) {
     galeria.removeChild(galeria.firstChild);
@@ -73,6 +81,7 @@ function enviar() {
       .then((json) => encontrarCat(json));
   }
 }
+
 function encontrarCat(jxson) {
   while (galeria.firstChild) {
     galeria.removeChild(galeria.firstChild);
@@ -84,26 +93,97 @@ function encontrarCat(jxson) {
     mostrarProductos(jxson.products[b]);
   }
 }
+
 function enfocarUno(prod) {
   console.log("carlos verza");
   console.log("hola mundo");
   console.log(prod);
 }
+
 function testCartAdd(id) {
   console.log("ok");
-  cart.push("producto id agregado = " + id);
   console.log(id);
-  modSpanCart();
   mostrarLog(id);
+  modSpanCart();
+  cargarOne(id);
+  spanTotal.innerHTML = "$" + totalprice;
 }
+
 function testCart() {
   console.log(cart);
+  cargarCart();
 }
+
 function modSpanCart() {
-  spanCart.innerHTML = `${cart.length}`;
+  spanCart.innerHTML = `${cart.length + 1}`;
 }
+
 function mostrarLog(idd) {
   fetch(urln + idd)
     .then((res) => res.json())
     .then((json) => cart.push(json));
+}
+
+function cargarCart() {
+  while (prodsShop.firstChild) {
+    prodsShop.removeChild(prodsShop.firstChild);
+  }
+  totalprice = 0;
+  for (let i = 0; i < cart.length; i++) {
+    cargarAShop(cart[i]);
+    totalprice += cart[i].price;
+  }
+  spanTotal.innerHTML = "$ " + totalprice;
+  console.log("el preci de todo funciona y es:" + totalprice);
+}
+
+function cargarAShop(prd) {
+  const prdd = document.createElement("div");
+  prdd.classList.add("prodd");
+  prdd.innerHTML = `
+  <div class="boximg">
+              <img src="${prd.images[0]}" alt="" />
+            </div>
+            <div class="box">
+              <div class="titulo-precio">
+                <div class="titfix">
+                  <h3>${prd.title}</h3>
+                </div>
+                <p>$${prd.price}</p>
+              </div>
+            </div>
+            <div class="box">
+              <div class="quantity-handler">
+              <span><i class="fa-solid fa-minus menos"></i></span>
+              <span class="numcuant">1</span>
+              <span onclick="sumar();"><i class="fa-solid fa-plus menos" ></i></span>
+              </div>
+            </div>
+            <i class="fa-solid fa-trash"></i>
+    `;
+  prodsShop.append(prdd);
+}
+
+function cargarOne(pid) {
+  fetch(urln + pid)
+    .then((res) => res.json())
+    .then((json) => cargarAShop(json));
+  fetch(urln + pid)
+    .then((res) => res.json())
+    .then((json) => sumarPrecio(json));
+}
+function sumarPrecio(pdr) {
+  let totp = totalprice + pdr.price;
+  totalprice += pdr.price;
+  spanTotal.innerHTML = "$ " + totp;
+}
+function vaciarCart() {
+  cart = [];
+  spanCart.innerHTML = "0";
+  prodsShop.innerHTML = "";
+  totalprice = 0;
+  spanTotal.innerHTML = "$ " + totalprice;
+}
+function sumar() {
+  console.log(spanCuantCart);
 }

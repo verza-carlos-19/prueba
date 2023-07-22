@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="./app.js" async></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -13,42 +14,78 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <title>proyect 1</title>
   </head>
-  <body onload="init()">
+  <!-- onload="init()" -->
+  <body>
     <header>
-      <div class="buscar">
-        <section class="src">
-          <p class="tit">CATEGORIES:</p>
-        </section>
-        <section class="src">
-          <select name="combobox" id="combobox">
-            <option class="opt" value="">alls</option>
-          </select>
-        </section>
-        <section class="src">
-          <button id="btn-src" onclick="enviar()">SEARCH</button>
-        </section>
+      <div class="boxnav">
+        <div class="buscar">
+          <section class="src">
+            <p class="tit">CATEGORIES:</p>
+          </section>
+          <section class="src">
+            <select name="combobox" id="combobox">
+              <option class="opt" value="">alls</option>
+            </select>
+          </section>
+          <section class="src">
+            <button id="btn-src" onclick="enviar()">SEARCH</button>
+          </section>
+        </div>
       </div>
-      <div class="carting" onclick="testCart()">
-        <!-- <span class="material-symbols-outlined"> add_shopping_cart </span>-->
-        <span class="material-symbols-outlined cart" onclick="testCart()">
-          shopping_cart
-        </span>
-        <span id="numcart"> 0 </span>
+      <label for="toggle-shop">
+        <!-- onclick="testCart()" -->
+        <div class="carting">
+          <!-- <span class="material-symbols-outlined"> add_shopping_cart </span>-->
+          <span class="material-symbols-outlined cart"> shopping_cart </span>
+          <span class="numcart"> 0 </span>
+        </div>
+      </label>
+      <input type="checkbox" id="toggle-shop" />
+
+      <div class="shop-cart">
+        <h2>SHOP-CART</h2>
+        <div class="prods" id="prods"></div>
+        <div class="cartdl">
+          <button class="cart-trsh">
+            empty cart<i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
+        <div class="total">
+          <h2>TOTAL</h2>
+          <span class="total-gral">$0</span>
+          <button class="btn-carter">pagar</button>
+        </div>
       </div>
     </header>
     <main>
-      <div class="product">
+      <!-- <div class="product">
         <div class="img">
-          <img src="" alt="" />
+          <img src="./imgs/1674562075449.jpeg" alt="" />
         </div>
         <div class="info">
           <div class="info-title">
-            <h2 class="titlee">prueba</h2>
+            <h2 class="titlee">Lorem ipsum dolor sit amet consectetur.</h2>
           </div>
           <div class="info-des">
-            <p class="descripcion">${producto.description}</p>
+            <p class="descripcion">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex est
+              iure consequuntur delectus aperiam ipsa id quibusdam eius
+              voluptatem quia laboriosam voluptates alias mollitia quo esse
+              maiores atque nihil quos, molestiae sequi recusandae modi.
+              Aspernatur deserunt perspiciatis, nostrum asperiores dolorum, ab
+              itaque iste aliquam consequuntur dolores mollitia quidem eius?
+              Labore.
+            </p>
           </div>
           <div class="buttons">
             <button class="btns btn-srv" onclick="enfocarUno()">
@@ -57,12 +94,13 @@
             <button class="btns btn-agregar" onclick="testCartAdd()">
               add to cart
             </button>
-            <!--<span class="material-symbols-outlined cartadd">
+            <span class="material-symbols-outlined cartadd">
               add_shopping_cart
-            </span>-->
+            </span>
           </div>
         </div>
-      </div>
+      </div> -->
+      <div class="prodeta"></div>
       <div id="galeria"></div>
     </main>
     <footer>
@@ -76,6 +114,6 @@
       </div>
       <div id="copy">&copy;2023-VERZADEV.</div>
     </footer>
-    <script src="index.js"></script>
+    <!-- <script src="index.js"></script> -->
   </body>
 </html>
