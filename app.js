@@ -4,6 +4,7 @@ const urln = "https://dummyjson.com/product/";
 let combox = document.querySelector("#combobox");
 var seleccion = "";
 var categories = "";
+var cartVisibility = false;
 
 if (document.readyState == "loading") {
   document.addEventListener("DOMContentLoaded", ready);
@@ -34,7 +35,29 @@ function ready() {
   document
     .getElementsByClassName("cart-trsh")[0]
     .addEventListener("click", eliminarTodosCart);
+  document
+    .getElementsByClassName("carting")[0]
+    .addEventListener("click", guardCart);
 }
+function guardCart() {
+  if (cartVisibility == false) {
+    guardarCart(true);
+  } else {
+    guardarCart(false);
+  }
+}
+function guardarCart(tog) {
+  var cartItems = document.getElementsByClassName("prods")[0];
+  var cart = document.getElementsByClassName("shop-cart")[0];
+  cartVisibility = tog;
+  if (cartItems.hasChildNodes() == false || cartVisibility == false) {
+    cart.style.translate = "200%";
+    console.log("ok el test de guardar el carro funciona");
+  } else {
+    cart.style.translate = "0%";
+  }
+}
+
 function eliminarTodosCart() {
   var cartt = document.getElementsByClassName("prods")[0];
   while (cartt.firstChild) {
@@ -44,12 +67,14 @@ function eliminarTodosCart() {
   //   var spanCant = document.getElementsByClassName("numcart")[0];
   //   spanCant.innerHTML = "0";
   actualizarSpanCant();
+  guardarCart();
 }
 function eliminarItemCart(event) {
   var btnClicked = event.target;
   btnClicked.parentElement.remove();
   actualizarTotalCart();
   actualizarSpanCant();
+  guardarCart();
 }
 function actualizarTotalCart() {
   var cartCont = document.getElementsByClassName("prods")[0];
@@ -95,11 +120,13 @@ function restarCantidadCart(event) {
   console.log(cantidadActual);
   cantidadActual--;
   console.log(cantidadActual);
-  if (cantidadActual >= 1) {
-    selector.getElementsByClassName("numcuant")[0].value = cantidadActual;
-    actualizarTotalCart();
+  selector.getElementsByClassName("numcuant")[0].value = cantidadActual;
+  actualizarTotalCart();
+  if (cantidadActual == 0) {
+    selector.parentElement.parentElement.remove();
   }
   actualizarSpanCant();
+  guardarCart();
 }
 function cargarAlCart(event) {
   var btnClicked = event.target;
@@ -187,16 +214,7 @@ function cargarItemAlCarrito(titulo, precio, imagen) {
   actualizarTotalCart();
   actualizarSpanCant();
 }
-function sumarSpanCantidad() {
-  var spanCant = document.getElementsByClassName("numcart")[0];
-  console.log(spanCant);
-  var cantidadActual = parseInt(spanCant.innerText);
-  console.log(cantidadActual);
-  cantidadActual++;
-  console.log(cantidadActual);
-  spanCant.innerHTML = cantidadActual;
-  console.log(spanCant);
-}
+
 //bateria de funciones que hacen funcionar el combox y cargan los prods.
 function init() {
   categories = "https://dummyjson.com/products/categories";
