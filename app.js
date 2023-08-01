@@ -110,7 +110,7 @@ function sumarCantidadCart(event) {
   cantidadActual++;
   console.log(cantidadActual);
   selector.getElementsByClassName("numcuant")[0].value = cantidadActual;
-  sumarSpanCantidad();
+  actualizarSpanCant();
   actualizarTotalCart();
 }
 function restarCantidadCart(event) {
